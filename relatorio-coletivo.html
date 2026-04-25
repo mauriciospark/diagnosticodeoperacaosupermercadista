@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório Coletivo - Diagnóstico Supermercadista</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .report-section {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            padding: 30px;
+        }
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+        .header-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .team-member {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #0d6efd;
+            margin-bottom: 15px;
+        }
+        .member-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #0d6efd;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid py-4">
+        <!-- Cabeçalho do Relatório -->
+        <div class="header-section text-center">
+            <h1 class="mb-3">
+                <i class="fas fa-users me-3"></i>
+                Relatório Coletivo de Projeto
+            </h1>
+            <h2 class="mb-0">Diagnóstico de Operação Supermercadista</h2>
+            <p class="mt-3 mb-0">Sistema de Análise e Desenvolvimento de Software</p>
+        </div>
+
+        <a href="index.html" class="btn btn-primary">Voltar ao Diagnóstico</a>
+
+        <!-- Informações da Equipe -->
+        <div class="report-section">
+            <h3 class="mb-4">
+                <i class="fas fa-users-cog me-2 text-primary"></i>
+                Informações da Equipe
+            </h3>
+            
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label for="teamName" class="form-label fw-bold">Nome da Equipe</label>
+                    <input type="text" class="form-control" id="teamName" placeholder="Digite o nome da equipe">
+                </div>
+                <div class="col-md-6">
+                    <label for="projectDate" class="form-label fw-bold">Data do Projeto</label>
+                    <input type="text" class="form-control" id="projectDate" value="Abril/2024" readonly>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="institution" class="form-label fw-bold">Instituição de Ensino</label>
+                    <input type="text" class="form-control" id="institution" value="Faculdade de Tecnologia" readonly>
+                </div>
+            </div>
+        </div>
+
+        <!-- Membros da Equipe -->
+        <div class="report-section">
+            <h3 class="mb-4">
+                <i class="fas fa-user-friends me-2 text-primary"></i>
+                Membros da Equipe
+            </h3>
+            
+            <div id="teamMembersContainer">
+                <!-- Membro 1 -->
+                <div class="team-member">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <div class="member-avatar">1</div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold">Nome Completo</label>
+                                    <input type="text" class="form-control member-name" placeholder="Nome do membro 1">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold">Registro Acadêmico (RA)</label>
+                                    <input type="text" class="form-control member-ra" placeholder="Ex: 2023101234">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold">Função na Equipe</label>
+                                    <select class="form-select member-role">
+                                        <option value="">Selecione...</option>
+                                        <option value="Desenvolvedor Frontend">Desenvolvedor Frontend</option>
+                                        <option value="Desenvolvedor Backend">Desenvolvedor Backend</option>
+                                        <option value="Designer UI/UX">Designer UI/UX</option>
+                                        <option value="Analista de Sistemas">Analista de Sistemas</option>
+                                        <option value="Gerente de Projeto">Gerente de Projeto</option>
+                                        <option value="QA Tester">QA Tester</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Membro 2 -->
+                <div class="team-member">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <div class="member-avatar">2</div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold">Nome Completo</label>
+                                    <input type="text" class="form-control member-name" placeholder="Nome do membro 2">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold">Registro Acadêmico (RA)</label>
+                                    <input type="text" class="form-control member-ra" placeholder="Ex: 2023101235">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold">Função na Equipe</label>
+                                    <select class="form-select member-role">
+                                        <option value="">Selecione...</option>
+                                        <option value="Desenvolvedor Frontend">Desenvolvedor Frontend</option>
+                                        <option value="Desenvolvedor Backend">Desenvolvedor Backend</option>
+                                        <option value="Designer UI/UX">Designer UI/UX</option>
+                                        <option value="Analista de Sistemas">Analista de Sistemas</option>
+                                        <option value="Gerente de Projeto">Gerente de Projeto</option>
+                                        <option value="QA Tester">QA Tester</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Membro 3 -->
+                <div class="team-member">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <div class="member-avatar">3</div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold">Nome Completo</label>
+                                    <input type="text" class="form-control member-name" placeholder="Nome do membro 3">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold">Registro Acadêmico (RA)</label>
+                                    <input type="text" class="form-control member-ra" placeholder="Ex: 2023101236">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold">Função na Equipe</label>
+                                    <select class="form-select member-role">
+                                        <option value="">Selecione...</option>
+                                        <option value="Desenvolvedor Frontend">Desenvolvedor Frontend</option>
+                                        <option value="Desenvolvedor Backend">Desenvolvedor Backend</option>
+                                        <option value="Designer UI/UX">Designer UI/UX</option>
+                                        <option value="Analista de Sistemas">Analista de Sistemas</option>
+                                        <option value="Gerente de Projeto">Gerente de Projeto</option>
+                                        <option value="QA Tester">QA Tester</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Membro 4 -->
+                <div class="team-member">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <div class="member-avatar">4</div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold">Nome Completo</label>
+                                    <input type="text" class="form-control member-name" placeholder="Nome do membro 4">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold">Registro Acadêmico (RA)</label>
+                                    <input type="text" class="form-control member-ra" placeholder="Ex: 2023101237">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold">Função na Equipe</label>
+                                    <select class="form-select member-role">
+                                        <option value="">Selecione...</option>
+                                        <option value="Desenvolvedor Frontend">Desenvolvedor Frontend</option>
+                                        <option value="Desenvolvedor Backend">Desenvolvedor Backend</option>
+                                        <option value="Designer UI/UX">Designer UI/UX</option>
+                                        <option value="Analista de Sistemas">Analista de Sistemas</option>
+                                        <option value="Gerente de Projeto">Gerente de Projeto</option>
+                                        <option value="QA Tester">QA Tester</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-outline-primary no-print" onclick="addTeamMember()">
+                <i class="fas fa-plus me-2"></i>Adicionar Membro
+            </button>
+        </div>
+
+        <!-- Informações do Projeto -->
+        <div class="report-section">
+            <h3 class="mb-4">
+                <i class="fas fa-project-diagram me-2 text-primary"></i>
+                Informações do Projeto
+            </h3>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="projectTitle" class="form-label fw-bold">Título do Projeto</label>
+                    <input type="text" class="form-control" id="projectTitle" value="Diagnóstico de Operação Supermercadista" readonly>
+                </div>
+            </div>
+            
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <label for="projectDescription" class="form-label fw-bold">Descrição do Projeto</label>
+                    <textarea class="form-control" id="projectDescription" rows="4" readonly>Sistema web para diagnóstico completo da operação de supermercados, desenvolvido como trabalho acadêmico para o curso de Análise e Desenvolvimento de Sistemas. A aplicação permite coletar dados detalhados sobre a operação do estabelecimento, gerando relatórios em PDF com análises estruturadas em quatro blocos principais: Dados Gerais, Logística e Estoque, Tecnologia e Operação, e Visão de Gestão.</textarea>
+                </div>
+            </div>
+            
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <label for="developmentDate" class="form-label fw-bold">Período de Desenvolvimento</label>
+                    <input type="text" class="form-control" id="developmentDate" value="Abril/2024" readonly>
+                </div>
+                <div class="col-md-4">
+                    <label for="technologies" class="form-label fw-bold">Tecnologias Utilizadas</label>
+                    <input type="text" class="form-control" id="technologies" value="HTML5, CSS3, JavaScript, Bootstrap 5, jsPDF, html2canvas" readonly>
+                </div>
+                <div class="col-md-4">
+                    <label for="course" class="form-label fw-bold">Curso</label>
+                    <input type="text" class="form-control" id="course" value="Análise e Desenvolvimento de Sistemas" readonly>
+                </div>
+            </div>
+        </div>
+
+        <!-- Objetivos e Metodologia -->
+        <div class="report-section">
+            <h3 class="mb-4">
+                <i class="fas fa-bullseye me-2 text-primary"></i>
+                Objetivos e Metodologia
+            </h3>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="objectives" class="form-label fw-bold">Objetivos do Projeto</label>
+                    <textarea class="form-control" id="objectives" rows="6" readonly>Objetivo Geral:
+Desenvolver uma ferramenta digital completa para diagnóstico operacional de supermercados, permitindo análise detalhada e geração de relatórios profissionais.
+
+Objetivos Específicos:
+- Criar interface intuitiva para coleta de dados operacionais
+- Implementar sistema de gestão de equipe técnica
+- Desenvolver funcionalidade de geração de PDF personalizado
+- Estruturar análise em quatro blocos temáticos completos
+- Aplicar conceitos de UX/UI para melhor experiência do usuário
+- Implementar persistência de dados com localStorage
+- Criar sistema de validação e tratamento de erros</textarea>
+                </div>
+                <div class="col-md-6">
+                    <label for="methodology" class="form-label fw-bold">Metodologia de Desenvolvimento</label>
+                    <textarea class="form-control" id="methodology" rows="6" readonly>O projeto foi desenvolvido seguindo uma abordagem iterativa e incremental, com as seguintes etapas:
+
+1. Análise de Requisitos: Levantamento detalhado das necessidades de diagnóstico operacional de supermercados
+2. Design de Interface: Criação de protótipos responsivos e acessíveis usando Bootstrap 5
+3. Desenvolvimento Frontend: Implementação das funcionalidades com JavaScript vanilla
+4. Integração de Bibliotecas: jsPDF para geração de relatórios e html2canvas para captura de elementos
+5. Testes e Validação: Verificação de funcionalidades e experiência do usuário
+6. Documentação: Elaboração de relatórios técnicos e de usuário</textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resultados e Conclusão -->
+        <div class="report-section">
+            <h3 class="mb-4">
+                <i class="fas fa-chart-line me-2 text-primary"></i>
+                Resultados e Conclusão
+            </h3>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="results" class="form-label fw-bold">Resultados Alcançados</label>
+                    <textarea class="form-control" id="results" rows="6" readonly>O projeto alcançou todos os objetivos propostos, entregando:
+
+1. Sistema Funcional: Aplicação web completa com todas as funcionalidades operando
+2. Interface Profissional: Design moderno e responsivo com excelente experiência do usuário
+3. Gestão de Equipe: Sistema completo para cadastro e gerenciamento de membros técnicos
+4. Geração de PDF: Relatórios estruturados em 3 páginas com formatação profissional
+5. Validação Robusta: Sistema completo de validação de formulários e tratamento de erros
+6. Persistência de Dados: Salvamento automático no localStorage
+7. Documentação Completa: Código comentado e relatórios detalhados</textarea>
+                </div>
+                <div class="col-md-6">
+                    <label for="conclusion" class="form-label fw-bold">Conclusão da Equipe</label>
+                    <textarea class="form-control" id="conclusion" rows="6" readonly>O projeto "Diagnóstico de Operação Supermercadista" representa uma solução completa e profissional para análise operacional de estabelecimentos comerciais do setor. 
+
+Durante o desenvolvimento, foi possível aplicar de forma prática todos os conceitos aprendidos no curso de Análise e Desenvolvimento de Sistemas, desde design de interfaces até programação JavaScript avançada.
+
+A solução atende plenamente aos requisitos propostos, oferecendo uma ferramenta robusta, intuitiva e eficiente que pode ser utilizada em contextos reais de negócio. O sistema demonstra domínio técnico das tecnologias web modernas e capacidade de desenvolver soluções complexas e bem estruturadas.
+
+Este projeto representa não apenas uma entrega acadêmica, mas uma aplicação real com potencial de uso comercial e contribuição efetiva para o setor supermercadista.</textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botões de Ação -->
+        <div class="text-center mb-5 no-print">
+            <button type="button" class="btn btn-primary btn-lg me-3" onclick="saveCollectiveReport()">
+                <i class="fas fa-save me-2"></i>Salvar Relatório
+            </button>
+            <button type="button" class="btn btn-success btn-lg me-3" onclick="generateCollectivePDFReport()">
+                <i class="fas fa-file-pdf me-2"></i>Gerar PDF
+            </button>
+            <button type="button" class="btn btn-secondary btn-lg" onclick="printReport()">
+                <i class="fas fa-print me-2"></i>Imprimir
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        let memberCount = 4;
+
+        function addTeamMember() {
+            memberCount++;
+            const container = document.getElementById('teamMembersContainer');
+            
+            const newMember = document.createElement('div');
+            newMember.className = 'team-member';
+            newMember.innerHTML = `
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <div class="member-avatar">${memberCount}</div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">Nome Completo</label>
+                                <input type="text" class="form-control member-name" placeholder="Nome do membro ${memberCount}">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">Registro Acadêmico (RA)</label>
+                                <input type="text" class="form-control member-ra" placeholder="Ex: 202310123${memberCount}">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">Função na Equipe</label>
+                                <select class="form-select member-role">
+                                    <option value="">Selecione...</option>
+                                    <option value="Desenvolvedor Frontend">Desenvolvedor Frontend</option>
+                                    <option value="Desenvolvedor Backend">Desenvolvedor Backend</option>
+                                    <option value="Designer UI/UX">Designer UI/UX</option>
+                                    <option value="Analista de Sistemas">Analista de Sistemas</option>
+                                    <option value="Gerente de Projeto">Gerente de Projeto</option>
+                                    <option value="QA Tester">QA Tester</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(newMember);
+        }
+
+        function saveCollectiveReport() {
+            const members = [];
+            document.querySelectorAll('.team-member').forEach((member, index) => {
+                members.push({
+                    number: index + 1,
+                    name: member.querySelector('.member-name').value,
+                    ra: member.querySelector('.member-ra').value,
+                    role: member.querySelector('.member-role').value
+                });
+            });
+
+            const data = {
+                teamName: document.getElementById('teamName').value,
+                members: members,
+                objectives: document.getElementById('objectives').value,
+                methodology: document.getElementById('methodology').value,
+                results: document.getElementById('results').value,
+                conclusion: document.getElementById('conclusion').value,
+                savedAt: new Date().toISOString()
+            };
+            
+            localStorage.setItem('relatorioColetivo', JSON.stringify(data));
+            alert('Relatório coletivo salvo com sucesso!');
+        }
+
+        function loadCollectiveReport() {
+            const saved = localStorage.getItem('relatorioColetivo');
+            if (saved) {
+                const data = JSON.parse(saved);
+                document.getElementById('teamName').value = data.teamName || '';
+                
+                if (data.members) {
+                    data.members.forEach((member, index) => {
+                        const memberElements = document.querySelectorAll('.team-member');
+                        if (memberElements[index]) {
+                            memberElements[index].querySelector('.member-name').value = member.name || '';
+                            memberElements[index].querySelector('.member-ra').value = member.ra || '';
+                            memberElements[index].querySelector('.member-role').value = member.role || '';
+                        }
+                    });
+                }
+            }
+        }
+
+        function generateCollectivePDFReport() {
+            // Implementação similar à do formulário principal
+            alert('Funcionalidade de PDF será implementada');
+        }
+
+        function printReport() {
+            window.print();
+        }
+
+        // Carregar dados salvos ao iniciar
+        loadCollectiveReport();
+    </script>
+</body>
+</html>

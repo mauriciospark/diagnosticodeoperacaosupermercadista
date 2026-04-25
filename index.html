@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico de Operação Supermercadista</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <header class="bg-primary text-white py-4 mb-4">
+            <div class="container">
+                <h1 class="mb-0">
+                    <i class="fas fa-store me-3"></i>
+                    Roteiro de Diagnóstico: Operação Supermercadista
+                </h1>
+                <p class="mb-0 mt-2">Análise completa da operação do seu supermercado</p>
+            </div>
+        </header>
+
+        <div align="center">
+            <a href="relatorio-individual.html" class="btn btn-primary">Gerar Relatório Individual</a>
+            <a href="relatorio-coletivo.html" class="btn btn-primary">Gerar Relatório Coletivo</a>
+        </div>
+        <br>
+        <main class="container">
+            <!-- Seção de Membros da Equipe -->
+            <section class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h4 mb-0">
+                        <i class="fas fa-users me-2"></i>
+                        Membros da Equipe
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Informações do Projeto:</strong> Preencha os dados abaixo que serão compartilhados
+                        com todos os membros da equipe.
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="projectProfessor" class="form-label">Nome do Professor Orientador</label>
+                                <input type="text" class="form-control" id="projectProfessor"
+                                    placeholder="Digite o nome do professor orientador do projeto">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Adicione os membros da equipe:</strong> Informe os dados dos membros que participarão do
+                        diagnóstico.
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="mb-3">
+                                <label for="teamMemberName" class="form-label">Nome do Membro</label>
+                                <input type="text" class="form-control" id="teamMemberName"
+                                    placeholder="Digite o nome do membro da equipe">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="teamMemberRole" class="form-label">Matrícula</label>
+                                <input type="text" class="form-control" id="teamMemberRole"
+                                    placeholder="Ex: 2023101234, 2022456789">
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h5 class="card-title">Membros Adicionados</h5>
+                                    <div id="teamMembersList" class="list-group">
+                                        <div class="text-muted">Nenhum membro adicionado ainda</div>
+                                    </div>
+
+                                    <button type="button" class="btn btn-success btn-sm mt-3 w-100" id="addTeamMember">
+                                        <i class="fas fa-plus me-2"></i>Adicionar Membro
+                                    </button>
+
+                                    <button type="button" class="btn btn-danger btn-sm mt-2 w-100"
+                                        id="clearTeamMembers">
+                                        <i class="fas fa-trash me-2"></i>Limpar Todos
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <form id="diagnosticForm">
+                <!-- Bloco 1: Dados Gerais -->
+                <section class="card mb-4">
+                    <div class="card-header bg-success text-white">
+                        <h2 class="h4 mb-0">
+                            <i class="fas fa-chart-line me-2"></i>
+                            Bloco 1: Onde o supermercado está hoje (Dados Gerais)
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Explicação para o dono:</strong> "Aqui eu só preciso dos dados oficiais e do tamanho
+                            da operação.
+                            Isso me ajuda a entender a escala do projeto: atender 2 caixas é muito diferente de atender
+                            10 caixas."
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="nomeFantasia" class="form-label">Nome Fantasia / Razão Social</label>
+                                <input type="text" class="form-control" id="nomeFantasia" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="cnpj" class="form-label">CNPJ</label>
+                                <input type="text" class="form-control" id="cnpj" placeholder="00.000.000/0000-00"
+                                    required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="dataFundacao" class="form-label">Data de Fundação</label>
+                                <input type="date" class="form-control" id="dataFundacao" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="endereco" class="form-label">Endereço Completo</label>
+                                <input type="text" class="form-control" id="endereco" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="tamanhoUnidade" class="form-label">Tamanho da Unidade (m²)</label>
+                                <input type="number" class="form-control" id="tamanhoUnidade" min="1" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="quantidadeCheckouts" class="form-label">Quantidade de Checkouts
+                                    (PDVs)</label>
+                                <input type="number" class="form-control" id="quantidadeCheckouts" min="1" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="numeroFuncionarios" class="form-label">Número de Funcionários</label>
+                                <input type="number" class="form-control" id="numeroFuncionarios" min="1" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="horarioFuncionamento" class="form-label">Horário de Funcionamento</label>
+                                <input type="text" class="form-control" id="horarioFuncionamento"
+                                    placeholder="Ex: Seg-Sex: 8h-20h, Sáb: 8h-18h, Dom: 9h-14h" required>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Bloco 2: Logística e Estoque -->
+                <section class="card mb-4">
+                    <div class="card-header bg-warning text-dark">
+                        <h2 class="h4 mb-0">
+                            <i class="fas fa-boxes me-2"></i>
+                            Bloco 2: Como a mercadoria se move (Logística e Estoque)
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Explicação para o dono:</strong> "Quero entender como o produto sai do caminhão e
+                            chega na prateleira.
+                            O objetivo é descobrir se o senhor está perdendo dinheiro com produtos vencendo no estoque
+                            ou se falta mercadoria que o cliente quer comprar."
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="frequenciaRecebimento" class="form-label">Frequência de Recebimento</label>
+                                <select class="form-select" id="frequenciaRecebimento" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="diario">Diário</option>
+                                    <option value="semanal">Semanal</option>
+                                    <option value="quinzenal">Quinzenal</option>
+                                    <option value="mensal">Mensal</option>
+                                    <option value="outro">Outro</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="gestaoValidade" class="form-label">Gestão de Validade</label>
+                                <textarea class="form-control" id="gestaoValidade" rows="3"
+                                    placeholder="Como é feito o controle para evitar vencimento na prateleira?"
+                                    required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="deposito" class="form-label">Depósito</label>
+                                <select class="form-select" id="deposito" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="local">Estoque local</option>
+                                    <option value="cd">Centro de Distribuição externo</option>
+                                    <option value="ambos">Ambos</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="gestaoPerdas" class="form-label">Gestão de Perdas</label>
+                                <textarea class="form-control" id="gestaoPerdas" rows="3"
+                                    placeholder="Como o senhor registra o que quebra ou estraga?" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Setores Críticos</label>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-check"
+                                            onclick="document.getElementById('acougue').checked = !document.getElementById('acougue').checked">
+                                            <input class="form-check-input" type="checkbox" id="acougue"
+                                                value="acougue">
+                                            <label class="form-check-label" for="acougue">Açougue</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-check"
+                                            onclick="document.getElementById('padaria').checked = !document.getElementById('padaria').checked">
+                                            <input class="form-check-input" type="checkbox" id="padaria"
+                                                value="padaria">
+                                            <label class="form-check-label" for="padaria">Padaria</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-check"
+                                            onclick="document.getElementById('hortifruti').checked = !document.getElementById('hortifruti').checked">
+                                            <input class="form-check-input" type="checkbox" id="hortifruti"
+                                                value="hortifruti">
+                                            <label class="form-check-label" for="hortifruti">Hortifruti</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-check"
+                                            onclick="document.getElementById('fiambreria').checked = !document.getElementById('fiambreria').checked">
+                                            <input class="form-check-input" type="checkbox" id="fiambreria"
+                                                value="fiambreria">
+                                            <label class="form-check-label" for="fiambreria">Fiambreria</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-check"
+                                            onclick="document.getElementById('adega').checked = !document.getElementById('adega').checked">
+                                            <input class="form-check-input" type="checkbox" id="adega" value="adega">
+                                            <label class="form-check-label" for="adega">Adega</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Bloco 3: Tecnologia e Operação -->
+                <section class="card mb-4">
+                    <div class="card-header bg-info text-white">
+                        <h2 class="h4 mb-0">
+                            <i class="fas fa-cash-register me-2"></i>
+                            Bloco 3: A velocidade do seu caixa (Tecnologia e Operação)
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Explicação para o dono:</strong> "Aqui é a parte técnica, focada na sua paz de
+                            espírito.
+                            Quero saber se o seu sistema atual trava, se ele é lento ou se as informações batem.
+                            Se o caixa é rápido, o cliente fica feliz e volta."
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="softwareAtual" class="form-label">Software Atual (ERP)</label>
+                                <input type="text" class="form-control" id="softwareAtual"
+                                    placeholder="Qual sistema utiliza hoje?" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="infraestrutura" class="form-label">Infraestrutura</label>
+                                <select class="form-select" id="infraestrutura" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="local">Sistema local (servidor na loja)</option>
+                                    <option value="nuvem">Sistema em nuvem</option>
+                                    <option value="híbrido">Híbrido</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="integracoes" class="form-label">Integrações</label>
+                                <textarea class="form-control" id="integracoes" rows="3"
+                                    placeholder="O sistema conversa bem com as balanças e coletores de preço?"
+                                    required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="emissaoFiscal" class="form-label">Emissão Fiscal</label>
+                                <textarea class="form-control" id="emissaoFiscal" rows="3"
+                                    placeholder="Como é o processo de NFC-e/NF-e? Alguma lentidão?" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label for="gargalosTI" class="form-label">Gargalos de TI</label>
+                                <textarea class="form-control" id="gargalosTI" rows="3"
+                                    placeholder="Onde o sistema mais te deixa na mão hoje?" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Bloco 4: Visão de Gestão -->
+                <section class="card mb-4">
+                    <div class="card-header bg-danger text-white">
+                        <h2 class="h4 mb-0">
+                            <i class="fas fa-chart-pie me-2"></i>
+                            Bloco 4: O que o senhor precisa para decidir melhor (Visão de Gestão)
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Explicação para o dono:</strong> "Por fim, quero saber quais informações o senhor
+                            gostaria de ter na mão agora e não tem.
+                            O projeto serve para transformar os dados de venda em ferramentas para o senhor tomar
+                            decisões mais seguras."
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="perfilCliente" class="form-label">Perfil do Cliente</label>
+                                <input type="text" class="form-control" id="perfilCliente"
+                                    placeholder="Quem é o seu público principal? (Bairro, atacarejo, premium)" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="fidelidade" class="form-label">Fidelidade</label>
+                                <textarea class="form-control" id="fidelidade" rows="3"
+                                    placeholder="O senhor consegue identificar quem são os seus 100 melhores clientes?"
+                                    required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Canais de Venda</label>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-check"
+                                            onclick="document.getElementById('whatsapp').checked = !document.getElementById('whatsapp').checked">
+                                            <input class="form-check-input" type="checkbox" id="whatsapp"
+                                                value="whatsapp">
+                                            <label class="form-check-label" for="whatsapp">WhatsApp</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-check"
+                                            onclick="document.getElementById('app').checked = !document.getElementById('app').checked">
+                                            <input class="form-check-input" type="checkbox" id="app" value="app">
+                                            <label class="form-check-label" for="app">App Próprio</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="financeiro" class="form-label">Financeiro</label>
+                                <textarea class="form-control" id="financeiro" rows="3"
+                                    placeholder="Como é feito o fechamento de caixa e a conferência de cartões/Pix?"
+                                    required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="dorPrincipal" class="form-label">A "Dor" Principal</label>
+                                <textarea class="form-control" id="dorPrincipal" rows="3"
+                                    placeholder="Se pudesse resolver um único problema hoje com tecnologia, qual seria?"
+                                    required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Dicas de Ouro -->
+                <section class="card mb-4">
+                    <div class="card-header bg-secondary text-white">
+                        <h2 class="h4 mb-0">
+                            <i class="fas fa-lightbulb me-2"></i>
+                            Dicas de Ouro para o Momento
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="alert alert-warning">
+                                    <h5><i class="fas fa-eye me-2"></i>Observação Passiva</h5>
+                                    <p class="mb-0">Antes de sentar com ele, dê uma volta na loja. Veja se há filas
+                                        grandes ou se os preços na prateleira batem com o terminal de consulta.
+                                        Use isso na conversa: "Notei que no corredor X..."</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="alert alert-success">
+                                    <h5><i class="fas fa-graduation-cap me-2"></i>O Valor do ADS</h5>
+                                    <p class="mb-0">Como você está no final do curso de Sistemas de Análise e
+                                        Desenvolvimento,
+                                        mencione que o objetivo é criar uma solução que automatize o que hoje ele faz
+                                        manualmente ou no "olhômetro".</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Botões de Ação -->
+                <div class="text-center mb-5">
+                    <button type="submit" class="btn btn-primary btn-lg me-3">
+                        <i class="fas fa-save me-2"></i>Salvar Diagnóstico
+                    </button>
+                    <button type="button" class="btn btn-success btn-lg me-3" id="generatePDF">
+                        <i class="fas fa-file-pdf me-2"></i>Gerar PDF
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-lg" id="clearForm">
+                        <i class="fas fa-eraser me-2"></i>Limpar Formulário
+                    </button>
+                </div>
+            </form>
+        </main>
+
+        <footer class="bg-dark text-white py-4 mt-5">
+            <div class="container text-center">
+                <p class="mb-0">© 2024 - Diagnóstico de Operação Supermercadista | Desenvolvido por Analista de Sistemas
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
